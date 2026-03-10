@@ -1,0 +1,123 @@
+<div class="mx-4 profile-section">
+    <form id="uploadform" action="/fileupload" method="post" enctype="multipart/form-data" hidden>
+        <input type="file" name="image" id="profileImage" accept="image/*">
+    </form>
+    <div class="mx-[131px] flex row item-center justify-between">
+        <div class="flex p-2 h-[260px]">
+            <!-- user-profile image section  -->
+            <div class="flex items-center justify-center">
+                <div class="position-absolute bottom-0 end-0" id="uploadicon">
+                    <i class="fas fa-circle-plus "></i>
+                </div>
+                <div class="w-[150px] h-[150px] ">
+                    <div class="">
+                        <img class="rounded-circle" src="/images/uploads/<%= user.profileImage %>" alt="">
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- user-details section  -->
+            <div class="m-3 flex flex-col ">
+                <!-- user biography  -->
+                <div class="mb-2 flex flex-col">
+                    <span class="font-bold text-2xl">
+                        <%= user.username %>
+                    </span>
+                    <span class="text-base">
+                        <%=user?.fname %>
+                            <%= user?.lname %>
+                    </span>
+                </div>
+
+                <div class="mb-3 flex">
+                    <div class="mr-3 flex text-center text-sm">
+                        <p class="mr-1 font-bold">
+                            <%= user.posts?.length %>
+                        </p>
+                        <p class="">posts</p>
+                    </div>
+                    <div class="mr-3 flex text-center text-sm ">
+                        <p class="mr-1 font-bold">389</p>
+                        <p class="">follower</p>
+                    </div>
+                    <div class="mr-3 flex text-center text-sm ">
+                        <p class="mr-1 font-bold">172</p>
+                        <p class=" ">following</p>
+                    </div>
+                </div>
+                <div class="block w-[150px]">
+                    <span class="text-wrap break-normal">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae ab
+                        reiciendis odio
+                        obcaecati laborum. </span>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-5">
+                <button type="button" class="w-100 btn btn-outline-light">Edit profile</button>
+            </div>
+            <div class="col-5">
+                <button type="button" class="w-100 btn btn-outline-light">Share profile</button>
+            </div>
+            <div class="col-2">
+                <button type="button" class="w-100 btn btn-outline-light"><i class="fas fa-user-plus"></i></button>
+            </div>
+        </div>
+        <div class="highlight-story">
+            <div class="highlight-status"><i class="fas fa-circle-plus"></i></div>
+        </div>
+    </div>
+    <div class="user-posts">
+        <div class="top d-flex align-item-center justify-content-around">
+            <a href="#" class=" "><i class="fas fa-table-cells"></i></a>
+            <a href="#" class=" "><i class="fas fa-clapperboard"></i></a>
+            <a href="#" class=" "><i class="fas fa-id-card-clip"></i></a>
+        </div>
+
+        <div class="row my-2 gy-3">
+            <% user.posts.forEach((post)=> { %>
+                <div class="col-4">
+                    <img src="/images/uploads/<%= post.postImage %>"
+                        class="object-fit-cover h-100 w-100 overflow-hidden " alt="">
+                </div>
+                <% }) %>
+        </div>
+        <!-- <div class="col ">
+                        <img src="/images/post-img2.jpg" class="object-fit-cover h-100 img-fluid" alt="">
+                    </div>
+                    <div class="col ">
+                        <img src="/images/post-img3.jpg" class="object-fit-cover h-100 img-fluid" alt="">
+                    </div> -->
+
+
+        <!-- <div class="my-2 row ">
+                    <div class="col ">
+                        <img src="/images/post-img1.jpg" class="object-fit-cover h-100 img-fluid" alt="">
+                    </div>
+                    <div class="col ">
+                        <img src="/images/post-img2.jpg" class="object-fit-cover h-100 img-fluid" alt="">
+                    </div>
+                    <div class="col ">
+                        <img src="/images/post-img3.jpg" class="object-fit-cover h-100 img-fluid" alt="">
+                    </div>
+                </div> -->
+
+    </div>
+
+
+</div>
+
+
+<script>
+    document.querySelector("#uploadicon").addEventListener("click", () => {
+        document.querySelector("#uploadform input").click();
+    })
+
+    document.querySelector("#uploadform input").addEventListener("change", (e) => {
+        document.querySelector("#uploadform").submit();
+        e.stopPropagation()
+    })
+</script>

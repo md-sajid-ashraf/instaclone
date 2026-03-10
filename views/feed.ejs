@@ -1,0 +1,309 @@
+<!-- Body of the page -->
+<main class="p-3">
+    <!-- Story Section  -->
+    <div class="story-list">
+        <div class="story">
+            <div class="status p-1">
+                <img class="rounded-circle" src="/images/insta_logo.png" alt="">
+            </div>
+            <p>John Done</p>
+        </div>
+        <div class="story">
+            <div class="status p-1">
+                <img class="rounded-circle" src="/images/insta_logo.png" alt="">
+            </div>
+            <p>John Done</p>
+        </div>
+        <div class="story">
+            <div class="status p-1">
+                <img class="rounded-circle" src="/images/insta_logo.png" alt="">
+            </div>
+            <p>John Done</p>
+        </div>
+        <div class="story">
+            <div class="status p-1">
+                <img class="rounded-circle" src="/images/insta_logo.png" alt="">
+            </div>
+            <p>John Done</p>
+        </div>
+        <div class="story">
+            <div class="status p-1">
+                <img class="rounded-circle" src="/images/insta_logo.png" alt="">
+            </div>
+            <p>John Done</p>
+        </div>
+        <div class="story">
+            <div class="status p-1">
+                <img class="rounded-circle" src="/images/insta_logo.png" alt="">
+            </div>
+            <p>John Done</p>
+        </div>
+        <div class="story">
+            <div class="status p-1">
+                <img class="rounded-circle" src="/images/insta_logo.png" alt="">
+            </div>
+            <p>John Done</p>
+        </div>
+        <div class="story">
+            <div class="status p-1">
+                <img class="rounded-circle" src="/images/insta_logo.png" alt="">
+            </div>
+            <p>John Done</p>
+        </div>
+        <div class="story">
+            <div class="status p-1">
+                <img class="rounded-circle" src="/images/insta_logo.png" alt="">
+            </div>
+            <p>John Done</p>
+        </div>
+        <div class="story">
+            <div class="status p-1">
+                <img class="rounded-circle" src="/images/insta_logo.png" alt="">
+            </div>
+            <p>John Done</p>
+        </div>
+        <div class="story">
+            <div class="status p-1">
+                <img class="rounded-circle" src="/images/insta_logo.png" alt="">
+            </div>
+            <p>John Done</p>
+        </div>
+        <div class="story">
+            <div class="status p-1">
+                <img class="rounded-circle" src="/images/insta_logo.png" alt="">
+            </div>
+            <p>John Done</p>
+        </div>
+        <div class="story">
+            <div class="status p-1">
+                <img class="rounded-circle" src="/images/insta_logo.png" alt="">
+            </div>
+            <p>John Done</p>
+        </div>
+        <div class="story">
+            <div class="status p-1">
+                <img class="rounded-circle" src="/images/insta_logo.png" alt="">
+            </div>
+            <p>John Done</p>
+        </div>
+    </div>
+
+
+    <!-- User current Posts on Feed Section  -->
+    <% posts.forEach(post=> { %>
+        <div class="feed-section position-relative">
+            <div class="feed-header">
+                <div class="feed-user">
+                    <div class="feed-status">
+                        <img class="rounded-circle" src="/images/insta_logo.png" alt="">
+                    </div>
+                    <p class="username">
+                        <%= post.user.username %>
+                    </p>
+                </div>
+                <div class="edit-btn">
+                    <button id="editBtn"><i class="fas fa-ellipsis-vertical"></i></button>
+                </div>
+            </div>
+            <div class="post border rounded border-red-50">
+                <img src="/images/uploads/<%= post.postImage %>" alt="">
+            </div>
+            <div class="feed-intraction py-1 px-2 flex ">
+                <div class="flex align-item-center justify-center">
+                    <button> <i class="fa-regular fs-4 pr-2 fa-heart"></i></button>
+                    <p class="likes">50</p>
+                </div>
+                <div class="flex">
+                    <button> <i class="fa-regular fs-4 pr-2 fa-comment"></i></button>
+                    <p class="likes">1</p>
+                </div>
+                <button> <i class="fa-regular fs-4 pr-2 fa-paper-plane"></i></button>
+            </div>
+            <div class="p-2 flex gap-1">
+                <p class="font-bold username">
+                    <%= post.user.username %>
+                </p>
+                <p> <%= post.description %> </p>
+            </div>
+        </div>
+        <% }) %>
+
+            <!-- Random Posts Feed Section  -->
+            <div class="feed-section">
+                <div class="feed-header">
+                    <div class="feed-user">
+                        <div class="feed-status">
+                            <img class="rounded-circle" src="/images/insta_logo.png" alt="">
+                        </div>
+                        <p class="username">John Done</p>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false"><i class="fas fa-ellipsis-vertical"></i></button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#share">Share</a></li>
+                            <li><a class="dropdown-item" href="#edit">Edit</a></li>
+                            <li><a class="dropdown-item" href="#about">About</a></li>
+                            <li><a class="dropdown-item" href="#delete">Delete</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="post">
+                    <img src="/images/post-img2.jpg" alt="">
+                </div>
+                <div class="feed-intraction">
+                    <button> <i class="fa-regular fs-4 pr-2 fa-heart"></i> 50 </button>
+                    <button> <i class="fa-regular fs-4 pr-2 fa-comment"></i> 1</button>
+                    <button> <i class="fa-regular fs-4 pr-2 fa-paper-plane"></i></button>
+                </div>
+            </div>
+
+            <div class="feed-section">
+                <div class="feed-header">
+                    <div class="feed-user">
+                        <div class="feed-status">
+                            <img class="rounded-circle" src="/images/insta_logo.png" alt="">
+                        </div>
+                        <p class="username">John Done</p>
+                    </div>
+                    <div class="edit-btn">
+                        <button id="editBtn"><i class="fas fa-ellipsis-vertical"></i></button>
+                    </div>
+                </div>
+                <div class="post">
+                    <img src="/images/post-img3.jpg" alt="">
+                </div>
+                <div class="feed-intraction">
+                    <button> <i class="fa-regular fs-4 pr-2 fa-heart"></i> 50 </button>
+                    <button> <i class="fa-regular fs-4 pr-2 fa-comment"></i> 1</button>
+                    <button> <i class="fa-regular fs-4 pr-2 fa-paper-plane"></i></button>
+                </div>
+            </div>
+
+            <div class="feed-section">
+                <div class="feed-header">
+                    <div class="feed-user">
+                        <div class="feed-status">
+                            <img class="rounded-circle" src="/images/insta_logo.png" alt="">
+                        </div>
+                        <p class="username">John Done</p>
+                    </div>
+                    <div class="edit-btn">
+                        <button id="editBtn"><i class="fas fa-ellipsis-vertical"></i></button>
+                    </div>
+                </div>
+
+                <div class="post">
+                    <img src="/images/post-img4.jpg" alt="">
+                </div>
+                <div class="feed-intraction">
+                    <button> <i class="fa-regular fs-4 pr-2 fa-heart"></i> 50 </button>
+                    <button> <i class="fa-regular fs-4 pr-2 fa-comment"></i> 1</button>
+                    <button> <i class="fa-regular fs-4 pr-2 fa-paper-plane"></i></button>
+                </div>
+            </div>
+
+            <div class="feed-section">
+                <div class="feed-header">
+                    <div class="feed-user">
+                        <div class="feed-status">
+                            <img class="rounded-circle" src="/images/insta_logo.png" alt="">
+                        </div>
+                        <p class="username">John Done</p>
+                    </div>
+                    <div class="edit-btn">
+                        <button id="editBtn"><i class="fas fa-ellipsis-vertical"></i></button>
+                    </div>
+                </div>
+
+                <div class="post">
+                    <img src="/images/post-img5.jpg" alt="">
+                </div>
+                <div class="feed-intraction">
+                    <button> <i class="fa-regular fs-4 pr-2 fa-heart"></i> 50 </button>
+                    <button> <i class="fa-regular fs-4 pr-2 fa-comment"></i> 1</button>
+                    <button> <i class="fa-regular fs-4 pr-2 fa-paper-plane"></i></button>
+                </div>
+            </div>
+
+</main>
+
+<!-- Third sidebar -->
+<div class="p-3 sidebar-3 border-l border-l-gray-800">
+    <div class="mx-2 my-4">
+        <div class="d-flex flex-columns">
+            <div style="width: 60px; height: 60px;">
+                <img class="w-100 h-100 object-fit-cover rounded-circle" src="/images/uploads/<%= user.profileImage %>"
+                    alt="">
+            </div>
+            <div class="mx-3 my-2">
+                <a href="/profile" class="text-decoration-none text-light">
+                    <p class="fs-6">
+                        <%= user.username %>
+                    </p>
+                </a>
+                <p class="fs-6 text-secondary">
+                    <%= user.fname %>
+                        <%= user.lname %>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mx-2 d-flex align-items-center justify-content-between">
+        <h6 class="fw-bold text-secondary">Suggest for you</h6>
+        <p class="fs-12 fw-bold">See All</p>
+    </div>
+
+    <!-- user Suggestion section  -->
+    <div class="mt-3 container-sm d-grid gap-3">
+        <div class="d-flex flex-columns">
+            <div style="width: 50px; height: 50px;">
+                <img class="w-100 h-100 object-fit-cover rounded-circle" src="/images/p1.jpg" alt="">
+            </div>
+            <div class="mx-3 my-2">
+                <p class="fs-12">afreenroquiya41</p>
+                <p class="fs-12 text-secondary">Followed by _sid_9852</p>
+            </div>
+        </div>
+
+        <div class="d-flex flex-columns">
+            <div style="width: 50px; height: 50px;">
+                <img class="w-100 h-100 object-fit-cover rounded-circle" src="/images/p2.jpg" alt="">
+            </div>
+            <div class="mx-3 my-2">
+                <p class="fs-12">rehanakhatoon8982</p>
+                <p class="fs-12 text-secondary">Followed by amir001__</p>
+            </div>
+        </div>
+
+        <div class="d-flex flex-columns">
+            <div style="width: 50px; height: 50px;">
+                <img class="w-100 h-100 object-fit-cover rounded-circle" src="/images/p3.jpg" alt="">
+            </div>
+            <div class="mx-3 my-2">
+                <p class="fs-12">md.arif8535</p>
+                <p class="fs-12 text-secondary">Followed by raziyaparween585</p>
+            </div>
+        </div>
+        <div class="d-flex flex-columns">
+            <div style="width: 50px; height: 50px;">
+                <img class="w-100 h-100 object-fit-cover rounded-circle" src="/images/p4.png" alt="">
+            </div>
+            <div class="mx-3 my-2">
+                <p class="fs-12">mdwakash6</p>
+                <p class="fs-12 text-secondary">Followed by md.arman.alam585</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- For costumer care -->
+
+    <div class="mt-2 p-3 container-sm">
+        <p class="mb-2 fs-12 text-break text-secondary">About . Help . Press . API . Jobs . Privacy . Terms .
+            Location . Language . Meta Verified</p>
+        <p class="mb-2 fs-12 text-break text-secondary">&#169; 2025 INTAGRAM FROM META</p>
+    </div>
+
+</div>

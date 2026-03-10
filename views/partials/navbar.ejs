@@ -1,0 +1,166 @@
+<div class="side-nav">
+    <div class="side-nav-items">
+        <div class="acct-actions">
+            <div class="nav-logo">
+                <a href="/feed">
+                    <img class="brand-name"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png"
+                        alt="brand-name"></a>
+            </div>
+            <div class="actions">
+                <div class="nav-link">
+                    <a href="/feed"><i class="fas fa-house"></i></a>
+                    <a href="/feed" class="li">Home</a>
+                </div>
+
+                <div class="nav-link">
+                    <a href="#"><i class="fas fa-search"></i></a>
+                    <a href="#search" class="li">Search</a>
+                </div>
+
+                <div class="nav-link hidden">
+                    <a href="#"><i class="far fa-compass"></i></a>
+                    <a href="#explore" class="li">Explore</a>
+                </div>
+
+                <div class="nav-link" onclick="openModal()">
+                    <i class="far fa-square-plus"></i>
+                    <button>Create</button>
+                </div>
+
+                <div class="nav-link">
+                    <a href="#"><i class="fas fa-clapperboard"></i></a>
+                    <a href="#reels" class="li">Reels</a>
+                </div>
+
+                <div class="nav-link">
+                    <a href="#"><i class="far fa-heart"></i></a>
+                    <a href="#notification" class="li">Notification</a>
+                </div>
+
+                <div class="nav-link">
+                    <a href="/profile"><i class="fas fa-user"></i></a>
+                    <a href="/profile" class="li">Profile</a>
+                </div>
+
+                <div class="nav-link ">
+                    <a href="#"><i class="fas fa-sign-out"></i></a>
+                    <a href="/logout" class="li">Logout</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Overlay -->
+<div id="modal" onclick="overlayClick(event)"
+    class="fixed inset-0 z-50 hidden bg-black/60 flex items-center justify-center">
+    <!-- Close Button (Top Right Corner) -->
+    <button onclick="closeModal()" class="absolute top-4 right-4 text-white-500">
+        <i class="fa fa-times fa-lg"></i>
+    </button>
+
+    <!-- Modal Container -->
+    <form action="/addpost" method="post" enctype="multipart/form-data">
+        <div class="bg-gray-800 w-[800px] h-[500px] rounded-xl overflow-hidden relative"
+            onclick="event.stopPropagation()">
+
+            <!-- Slider Wrapper -->
+            <div id="slider" class="flex w-[1600px] h-full transition-transform duration-500 ease-in-out">
+
+                <!-- Step 1: Image Upload -->
+                <div class="w-[800px] flex flex-col">
+
+                    <!-- Header -->
+                    <div class="bg-black flex justify-between items-center p-3 border-[#212529] border-b rounded-t-xl">
+                        <button type="button" onclick="closeModal()" class="text-gray-600 font-medium">Back</button>
+                        <p>Create new post</p>
+                        <button type="button" onclick="nextStep()" class="text-blue-600 font-medium">Next</button>
+                        <!-- <p>Create new post</p> -->
+                    </div>
+
+                    <!-- Upload Area -->
+                    <input type="file" accept="image/*" id="fileInput" name="postImage" hidden>
+                    <div id="previewContainer2" class="m-6 flex-1 border-2 border-dashed border-gray-300 rounded-lg 
+                      flex items-center justify-center hover:bg-gray-700">
+                        <div class="flex flex-col items-center  text-gray-500">
+                            <i class="fa fa-cloud-upload fa-6x"></i>
+                            <p class="text-white fs-4 "> Drag photos and videos here </p>
+                            <label for="fileInput"
+                                class="bg-primary mt-2 p-2 text-white rounded-lg cursor-pointer">Select from
+                                computer</label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Step 2: Details Section -->
+                <div class="w-[800px] flex flex-col bg-gray-800">
+
+                    <!-- Header -->
+                    <div class="bg-black flex justify-between items-center p-3 border-[#212529] border-b rounded-t-xl">
+                        <button type="button" onclick="prevStep()" class="text-blue-600 font-medium">Back</button>
+                        <p>Edit</p>
+                        <button type="submit" onclick="console.log('form submitted')"
+                            class="text-green-600 font-medium">Share</button>
+                        <!-- <button onclick="nextStep()" class="text-blue-600 font-medium">Next</button> -->
+                    </div>
+
+                    <!-- Content -->
+                    <div class="m-6 flex gap-6 h-full">
+
+                        <!-- Image Preview -->
+                        <div id="previewContainer"
+                            class="w-1/2 bg-gray-700 rounded-lg flex items-center justify-center flex-wrap gap-2 p-2">
+                            <span class="text-gray-500">Image Preview</span>
+                        </div>
+
+                        <!-- Details -->
+                        <div class="w-1/2 flex flex-col">
+                            <h2 class="font-semibold mb-2">Username</h2>
+                            <textarea name="description"
+                                class="bg-gray-700 flex-1 p-3 border rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                placeholder="Write a description..."></textarea>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    const modal = document.getElementById("modal");
+    const slider = document.getElementById("slider");
+
+    function openModal() {
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+    }
+
+    function closeModal() {
+        modal.classList.add("hidden");
+        slider.style.transform = "translateX(0px)";
+    }
+
+    function nextStep() {
+        slider.style.transform = "translateX(-800px)";
+    }
+
+    function prevStep() {
+        slider.style.transform = "translateX(0px)";
+    }
+
+    function overlayClick(event) {
+        if (event.target.id === "modal") {
+            closeModal();
+        }
+    }
+</script>

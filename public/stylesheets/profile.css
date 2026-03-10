@@ -1,0 +1,168 @@
+.profile-section {
+    padding: 30px 10px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    width: -webkit-fill-available;
+}
+
+.user-profile {
+    display: flex;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.profile .user-dp {
+    width: 132px;
+    height: 132px;
+    border-radius: 50%;
+    border: 4px solid var(--orange);
+    overflow: hidden;
+}
+
+.profile .user-dp img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile .user-dp .edit {
+    color: var(--text-white);
+    background: var(--dark-grey);
+    border-radius: 50%;
+}
+
+.profile i {
+    font-size: 28px;
+    cursor: pointer;
+}
+
+
+.user-activity {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+.user-activity .act {
+    text-align: center;
+    /* font-size: 23px; */
+}
+
+.user-bio {
+    margin: 5px auto;
+}
+
+
+.story {
+    margin: 0 10px;
+}
+
+.highlight-story {
+    margin: 20px 0;
+}
+
+.highlight-story .highlight-status {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 4px solid var(--grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.highlight-story .highlight-status i {
+    font-size: 64px;
+    color: var(--dark-grey);
+    opacity: 1;
+}
+
+.user-posts .top {
+    border-bottom: 1px solid var(--grey);
+}
+
+.user-posts .top a {
+    padding: 5px 10px;
+    text-decoration: none;
+    color: white;
+    border-bottom: 2px solid white;
+    /* border-radius: 0 0 3px 3px; */
+}
+
+.top a i {
+    font-size: 28px;
+}
+
+.user-posts .row .col-3{
+    width: 100%;
+    max-width: 250px;
+    max-height: 350px;
+}
+
+
+
+/* Responsive CSS for mobile  */
+@media (max-width: 408px) {
+    .profile-section {
+        width: 100vw;
+    }
+
+    .profile .user-dp {
+        width: 70px;
+        height: 70px;
+    }
+
+    .profile .user-dp img {
+        width: 100%;
+        height: 70px;
+    }
+
+    .user-dp .edit i {
+        font-size: 18px;
+    }
+
+    .profile p {
+        font-size: 14px;
+    }
+
+    .user-activity .act {
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .user-bio p {
+        font-size: 10px;
+    }
+
+    .row button {
+        --bs-btn-padding-y: 0.25rem;
+        --bs-btn-padding-x: 0.5rem;
+        --bs-btn-font-size: 0.8rem;
+        --bs-btn-border-radius: var(--bs-border-radius-sm);
+    }
+
+    .highlight-story .highlight-status {
+        width: 50px;
+        height: 50px;
+    }
+
+    .highlight-story .highlight-status i {
+        font-size: 35px;
+    }
+
+    .top a i {
+        font-size: 18px;
+    }
+
+    .user-posts .row .col-4{
+        max-width: 105px;
+        max-height: 105px;
+    }
+}
