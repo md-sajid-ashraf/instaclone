@@ -18,7 +18,7 @@ require("./models/User");
 require("./models/Post");
 
 var User = require("./models/User");
-var indexRouter = require("./routes/index");
+// var indexRouter = require("./routes/index");
 var userRouter = require("./routes/userRoutes")
 var postRouter = require("./routes/postRoutes")
 
@@ -33,14 +33,14 @@ app.use(expressLayouts);
 app.set("layout", "layout"); // layout.ejs use karega
 
 
-// ✅ STEP 1 - Pehle Basic Middleware
+// ✅ STEP 1 - Middleware
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-// ✅ STEP 2 - Phir Session
+// ✅ STEP 2 - Session
 app.use(expressSession({
   resave: false,
   saveUninitialized: false,
@@ -48,15 +48,15 @@ app.use(expressSession({
 }));
 app.use(flash());
 
-// ✅ STEP 3 - Phir Passport
+// ✅ STEP 3 - Passport
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// ✅ STEP 4 - Sabse Last mein Routes
-app.use("/", indexRouter);
+// ✅ STEP 4 - Routes
+// app.use("/", indexRouter);
 app.use("/", require("./routes/authRoutes"));
 app.use("/", require("./routes/userRoutes"));
 app.use("/", require("./routes/feedRoutes"));
@@ -96,5 +96,7 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
+
 console.log(__dirname);
+
 module.exports = app;

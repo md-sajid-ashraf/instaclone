@@ -63,10 +63,16 @@ exports.getLogin = (req, res) => {
 };
 
 /* LOGIN */
-exports.loginUser = async (req, res) => {
+exports.loginUser = async (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
+    // 1. Handle strategy-level errors (DB crash, etc.)
+    console.log("err:", err);
+    console.log("user:", user);
+    console.log("info:", info);
+
+    // 2. Authentication failed — guard info in case it's undefined
     if (!user) {
-      return res.status(401).json({message: info.message});
+      return res.status(401).json({ message: info?.message || "Authentication failed" });
     }
     req.logIn(user, (err) => {
       if (err) return next(err);
@@ -85,7 +91,7 @@ exports.loginUser = async (req, res) => {
       // Browser request -> redirect
       return res.redirect("/feed");
     });
-  })(req, res);
+  })(req, res, next);
 };
 
 /* LOGOUT */
