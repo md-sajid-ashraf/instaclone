@@ -44,22 +44,16 @@
     <title>Instagram Clone</title>
 </head>
 
-<body class=" font-sans font-[roboto]">
-    <!-- STARTING -->
-    <!-- Navbar Section  -->
-
-
-    <div class="flex w-full">
-        <% if (!locals.hideNavbar) { %>
+<body class="bg-black text-white m-0 p-0 overflow-x-hidden font-sans font-[roboto]">
+    
+    
+    
+    <% if (typeof user !== 'undefined' && user) { %>
         <%- include("partials/navbar") %>
-        <% } %>
-            <div class="flex w-full">
-                <%- body %>
-            </div>
-    </div>
+    <% } %>
+    
+    <%- body %>
 
-
-    <!-- END -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
