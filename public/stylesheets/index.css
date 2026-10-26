@@ -84,6 +84,11 @@ p {
   animation: tada 0.5s ;
 }
 
+.scrollbar-black {
+  scrollbar-color:  #e4e4e4 #383838; /* thumb color | track color */
+  scrollbar-width: thin;             /* auto, thin, or none */
+}
+
 @keyframes tada {
   0% {
     transform: rotate(0deg);

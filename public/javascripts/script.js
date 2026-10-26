@@ -2,7 +2,7 @@ const fileInputBtn = document.getElementById("fileInput-btn");
 const previewImage = document.getElementById("myImage");
 
 const editProfileBtn = document.getElementById("edit-profile");
-const profileImage = document.getElementById("profileImage");
+const profileImageInput = document.getElementById("profileImageInput");
 
 const errorMessage = document.querySelector(".animated");
 const editBtn = document.querySelector("#editBtn");

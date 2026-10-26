@@ -1,0 +1,209 @@
+<div class="flex flex-1 h-screen overflow-hidden pl-20 w-full ">
+    <!-- Left Settings Sidebar -->
+    <div class="w-1/3 border-r border-[#262626] p-6 hidden md:block h-full overflow-y-auto scrollbar-black">
+        <h1 class="text-xl font-bold mb-6">Settings</h1>
+
+        <!-- Search Bar -->
+        <div class="relative mb-6">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-neutral-400">
+                <i class="fa-solid fa-magnifying-glass text-sm"></i>
+            </span>
+            <input type="text" placeholder="Search"
+                class="w-full bg-[#262626] text-sm text-white placeholder-neutral-400 rounded-lg pl-9 pr-4 py-2 focus:outline-none">
+        </div>
+
+        <div class="space-y-6 text-sm">
+            <!-- Your Account Section -->
+            <div>
+                <p class="text-neutral-400 text-xs font-semibold mb-2 px-3">Your account</p>
+                <div class="flex items-start gap-3 p-3 hover:bg-[#1a1a1a] rounded-xl cursor-pointer">
+                    <i class="fa-brands fa-meta text-lg mt-0.5"></i>
+                    <div>
+                        <p class="font-medium">Account</p>
+                        <p class="text-xs text-neutral-400">Password, security, personal details, cross-profile
+                            experiences, ad preferences</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How you use Instagram -->
+            <div>
+                <p class="text-neutral-400 text-xs font-semibold mb-2 px-3">How you use Instagram</p>
+                <div class="flex items-center gap-3 p-3 bg-[#262626] rounded-xl font-semibold cursor-pointer">
+                    <i class="fa-regular fa-user text-lg"></i>
+                    <span>Edit profile</span>
+                </div>
+                <div class="flex items-center gap-3 p-3 hover:bg-[#1a1a1a] rounded-xl cursor-pointer text-neutral-300">
+                    <i class="fa-regular fa-bell text-lg"></i>
+                    <span>Notifications</span>
+                </div>
+            </div>
+
+            <!-- Who can see your content -->
+            <div>
+                <p class="text-neutral-400 text-xs font-semibold mb-2 px-3">Who can see your content</p>
+                <div class="flex items-center gap-3 p-3 hover:bg-[#1a1a1a] rounded-xl cursor-pointer text-neutral-300">
+                    <i class="fa-solid fa-lock text-base"></i> Account privacy
+                </div>
+                <div class="flex items-center gap-3 p-3 hover:bg-[#1a1a1a] rounded-xl cursor-pointer text-neutral-300">
+                    <i class="fa-regular fa-star text-base"></i> Close Friends
+                </div>
+                <div class="flex items-center gap-3 p-3 hover:bg-[#1a1a1a] rounded-xl cursor-pointer text-neutral-300">
+                    <i class="fa-solid fa-ban text-base"></i> Blocked
+                </div>
+                <div class="flex items-center gap-3 p-3 hover:bg-[#1a1a1a] rounded-xl cursor-pointer text-neutral-300">
+                    <i class="fa-regular fa-eye-slash text-base"></i> Story, live and location
+                </div>
+            </div>
+
+            <!-- How others can interact -->
+            <div>
+                <p class="text-neutral-400 text-xs font-semibold mb-2 px-3">How others can interact with you</p>
+                <div class="flex items-center gap-3 p-3 hover:bg-[#1a1a1a] rounded-xl cursor-pointer text-neutral-300">
+                    <i class="fa-regular fa-comment text-base"></i> Messages and story replies
+                </div>
+                <div class="flex items-center gap-3 p-3 hover:bg-[#1a1a1a] rounded-xl cursor-pointer text-neutral-300">
+                    <i class="fa-solid fa-at text-base"></i> Tags and mentions
+                </div>
+                <div class="flex items-center gap-3 p-3 hover:bg-[#1a1a1a] rounded-xl cursor-pointer text-neutral-300">
+                    <i class="fa-regular fa-comments text-base"></i> Comments
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Edit Profile Content Area -->
+    <div class="flex-1 p-6 md:p-10 w-2/3 h-full overflow-y-auto scrollbar-black">
+        <h2 class="text-xl font-bold mb-6">Edit profile</h2>
+
+        <form action="/update" method="post" enctype="multipart/form-data">
+            <input type="file" name="profileImage" id="profileImageInput" accept="image/*" class="hidden">
+            <!-- Profile Card Box -->
+            <div class="bg-[#262626]/50 border border-[#363636] rounded-2xl p-4 flex items-center justify-between mb-6">
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 bg-[#363636] rounded-full flex items-center justify-center overflow-hidden">
+                        <!-- <i class="fa-solid fa-user text-2xl text-neutral-400"></i> -->
+                         <img class="w-full h-full rounded-full object-cover border-2 border-black"
+                        src="/images/profiles/<%= user.profileImage %>" alt="profile-Image">
+                    </div>
+                    <div>
+                        <p class="font-semibold text-sm">
+                            <%= user.username %>
+                        </p>
+                        <p class="text-xs text-neutral-400">
+                            <%= user.fname %>
+                                <%= user.lname %>
+                        </p>
+                    </div>
+                </div>
+                <label for="profileImageInput"
+                    class="bg-[#0095f6] hover:bg-[#1877f2] text-white font-semibold text-sm px-4 py-1.5 rounded-lg transition">Change
+                    photo</label>
+            </div>
+
+            <!-- Website Input -->
+            <div class="mb-5">
+                <label class="block text-sm font-semibold mb-2">Website</label>
+                <input type="text" placeholder="Website" disabled
+                    class="w-full bg-[#121212] border border-[#363636] text-neutral-500 rounded-xl px-4 py-3 text-sm cursor-not-allowed focus:outline-none">
+                <p class="text-xs text-neutral-400 mt-1.5">Editing your links is only available on mobile. Visit the
+                    Instagram app and edit your profile to change the websites in your bio.</p>
+            </div>
+
+            <!-- Bio Textarea -->
+            <div class="mb-5">
+                <label class="block text-sm font-semibold mb-2">Bio</label>
+                <div class="relative border border-[#363636] rounded-xl bg-[#121212] focus-within:border-neutral-400">
+                    <textarea rows="3" maxlength="150" name="bio"
+                        class="w-full bg-transparent text-white text-sm p-3 focus:outline-none resize-none">BE THE ONE AND ONLY 😎
+    .
+    .
+    I DON'T HAVE TIME TO...</textarea>
+                    <div class="text-right text-xs text-neutral-500 px-3 pb-2">108 / 150</div>
+                </div>
+            </div>
+
+            <!-- AI-Generated Profile Toggle -->
+            <!-- <div class="flex items-center justify-between mb-6 border border-[#363636] bg-[#121212] p-4 rounded-xl">
+                <div>
+                    <p class="text-sm font-semibold">AI-generated profile</p>
+                    <p class="text-xs text-neutral-400 mt-0.5">Add this label if your profile features an AI-generated
+                        person. <a href="#" class="text-[#0095f6]">Learn more</a></p>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" class="sr-only peer">
+                    <div
+                        class="w-11 h-6 bg-[#262626] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#0095f6]">
+                    </div>
+                </label>
+            </div> -->
+
+            <!-- Gender Selection -->
+            <div class="mb-6">
+                <label class="block text-sm font-semibold mb-2">Gender</label>
+                <div class="relative">
+                    <select
+                        class="w-full bg-[#121212] border border-[#363636] text-white rounded-xl px-4 py-3 text-sm appearance-none focus:outline-none cursor-pointer">
+                        <option value="male" selected>Male</option>
+                        <option value="female">Female</option>
+                        <option value="custom">Custom</option>
+                        <option value="prefer_not">Prefer not to say</option>
+                    </select>
+                    <span
+                        class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-neutral-400">
+                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </span>
+                </div>
+                <p class="text-xs text-neutral-400 mt-1.5">This won't be part of your public profile.</p>
+            </div>
+
+            <!-- Show Account Suggestions Toggle -->
+            <div class="flex items-center justify-between mb-6 border border-[#363636] bg-[#121212] p-4 rounded-xl">
+                <div>
+                    <p class="text-sm font-semibold">Show account suggestions on profiles</p>
+                    <p class="text-xs text-neutral-400 mt-0.5">Choose whether people can see similar account suggestions
+                        on
+                        your profile, and whether your account can be suggested on other profiles.</p>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" checked class="sr-only peer">
+                    <div
+                        class="w-11 h-6 bg-[#262626] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-white">
+                    </div>
+                </label>
+            </div>
+
+            <!-- Info Text & Submit Button -->
+            <p class="text-xs text-neutral-400 mb-6">Certain profile info, like your name, bio and links, is visible to
+                everyone. <a href="#" class="text-[#0095f6]">See what profile info is visible</a></p>
+
+            <button type="submit"
+                class="w-full bg-[#00376b] hover:bg-[#00488f] text-white font-semibold py-3 rounded-xl transition text-sm">Submit</button>
+        </form>
+
+        <!-- Footer Links -->
+        <footer class="py-6 text-center text-xs text-neutral-500 mt-10">
+            <div class="flex flex-wrap justify-center gap-x-4 gap-y-2 mb-3">
+                <a href="#" class="hover:underline">Meta</a>
+                <a href="#" class="hover:underline">About</a>
+                <a href="#" class="hover:underline">Blog</a>
+                <a href="#" class="hover:underline">Jobs</a>
+                <a href="#" class="hover:underline">Help</a>
+                <a href="#" class="hover:underline">API</a>
+                <a href="#" class="hover:underline">Privacy</a>
+                <a href="#" class="hover:underline">Terms</a>
+                <a href="#" class="hover:underline">Locations</a>
+                <a href="#" class="hover:underline">Popular</a>
+                <a href="#" class="hover:underline">Instagram Lite</a>
+                <a href="#" class="hover:underline">Meta AI</a>
+                <a href="#" class="hover:underline">Muse</a>
+                <a href="#" class="hover:underline">Threads</a>
+                <a href="#" class="hover:underline">Contact Uploading & Non-Users</a>
+            </div>
+            <div class="flex justify-center gap-4 text-neutral-400">
+                <span>English <i class="fa-solid fa-chevron-down text-[10px]"></i></span>
+                <span>© 2026 Instagram from SAJID</span>
+            </div>
+        </footer>
+    </div>
+</div>

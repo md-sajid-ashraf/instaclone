@@ -15,9 +15,9 @@ exports.createPost = async (req, res) => {
   });
 
   const post = await Post.create({
-    user: user._id,
-    description: req.body.description,
     postImage: req.file ? req.file.filename : null,
+    user: user._id,
+    caption: req.body.caption,
   });
 
   if (post) {
@@ -28,6 +28,6 @@ exports.createPost = async (req, res) => {
     res.send("ERROR: 500");
   }
 
-  console.log(req.file);
-  console.log(req.body);
+  // console.log(req.file);
+  // console.log(req.body);
 };

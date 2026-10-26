@@ -1,113 +1,121 @@
-<div class="mx-4 profile-section">
-    <form id="uploadform" action="/fileupload" method="post" enctype="multipart/form-data" hidden>
-        <input type="file" name="image" id="profileImage" accept="image/*">
+<div class="mx-auto max-w-4xl px-4 py-8 profile-section text-white">
+    <!-- Hidden Upload Form -->
+    <form id="uploadform" action="/fileupload" method="post" enctype="multipart/form-data" class="hidden">
+        <input type="file" name="profileImage" id="profileImageInput" accept="image/*">
     </form>
-    <div class="mx-[131px] flex row item-center justify-between">
-        <div class="flex p-2 h-[260px]">
-            <!-- user-profile image section  -->
-            <div class="flex items-center justify-center">
-                <div class="position-absolute bottom-0 end-0" id="uploadicon">
-                    <i class="fas fa-circle-plus "></i>
+
+    <!-- Top Profile Header Section -->
+    <div class="flex flex-col mx-auto max-w-3xl px-4 py-8 border-b border-neutral-800">
+        <div class="flex flex-col md:flex-row items-center justify-center md:items-start gap-4 md:gap-20 p-2">
+            <!-- Profile Image with Upload Trigger & Story Ring -->
+            <div class="relative my-auto flex-shrink-0 cursor-pointer group" id="uploadicon" title="Change profile picture">
+                <div
+                    class="w-32 h-32 md:w-36 md:h-36 rounded-full p-[3px] bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600">
+                    <img class="w-full h-full rounded-full object-cover border-2 border-black"
+                        src="/images/profiles/<%= user.profileImage %>" alt="profile-Image">
                 </div>
-                <div class="w-[150px] h-[150px] ">
-                    <div class="">
-                        <img class="rounded-circle" src="/images/uploads/<%= user.profileImage %>" alt="">
+                <!-- Plus Icon Overlay on Hover -->
+                <div
+                    class="absolute bottom-1 right-1 bg-neutral-900 border-2 border-black text-white w-8 h-8 rounded-full flex items-center justify-center text-sm shadow-md transition group-hover:scale-110">
+                    <i class="fas fa-circle-plus text-sky-400"></i>
+                </div>
+            </div>
+
+            <!-- User Details Section -->
+            <div class="flex-1 flex flex-col">
+
+                <!-- Username & Action Buttons Row -->
+                <div class="flex flex-col gap-2 mb-2">
+                    <h1 class="text-3xl font-bold tracking-wide">
+                        <%= user.username %> <i class="fas fa-gear"></i>
+                    </h1>
+                    <p class="font-semibold mb-1">
+                        <%= user?.fname || '' %>
+                            <%= user?.lname || '' %>
+                    </p>
+
+                    <!-- Stats Row  -->
+                    <div class="flex items-center gap-4 mb-3">
+                        <div class="flex gap-1">
+                            <span class="font-semibold">
+                                <%= user.posts?.length || 0 %>
+                            </span>
+                            <span class="">posts</span>
+                        </div>
+                        <div class="flex gap-1 cursor-pointer ">
+                            <span class="font-semibold">389</span>
+                            <span class="">followers</span>
+                        </div>
+                        <div class="flex gap-1 cursor-pointer ">
+                            <span class="font-semibold">172</span>
+                            <span class="">following</span>
+                        </div>
                     </div>
                 </div>
 
-
-            </div>
-            <!-- user-details section  -->
-            <div class="m-3 flex flex-col ">
-                <!-- user biography  -->
-                <div class="mb-2 flex flex-col">
-                    <span class="font-bold text-2xl">
-                        <%= user.username %>
-                    </span>
-                    <span class="text-base">
-                        <%=user?.fname %>
-                            <%= user?.lname %>
-                    </span>
+                <!-- Bio Section -->
+                <div class="text-sm leading-relaxed max-w-md">
+                    <p class="text-neutral-300 break-words whitespace-pre-line"> <%= user.bio.slice(0, 65) %> ...more </p>
                 </div>
-
-                <div class="mb-3 flex">
-                    <div class="mr-3 flex text-center text-sm">
-                        <p class="mr-1 font-bold">
-                            <%= user.posts?.length %>
-                        </p>
-                        <p class="">posts</p>
-                    </div>
-                    <div class="mr-3 flex text-center text-sm ">
-                        <p class="mr-1 font-bold">389</p>
-                        <p class="">follower</p>
-                    </div>
-                    <div class="mr-3 flex text-center text-sm ">
-                        <p class="mr-1 font-bold">172</p>
-                        <p class=" ">following</p>
-                    </div>
-                </div>
-                <div class="block w-[150px]">
-                    <span class="text-wrap break-normal">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae ab
-                        reiciendis odio
-                        obcaecati laborum. </span>
-                </div>
-
-            </div>
-
-        </div>
-        <div class="row">
-            <div class="col-5">
-                <button type="button" class="w-100 btn btn-outline-light">Edit profile</button>
-            </div>
-            <div class="col-5">
-                <button type="button" class="w-100 btn btn-outline-light">Share profile</button>
-            </div>
-            <div class="col-2">
-                <button type="button" class="w-100 btn btn-outline-light"><i class="fas fa-user-plus"></i></button>
             </div>
         </div>
-        <div class="highlight-story">
-            <div class="highlight-status"><i class="fas fa-circle-plus"></i></div>
+
+        <!-- Action Row -->
+        <div class="flex gap-8 mb-5 text-sm md:text-base">
+            <a class="w-100" href="/account/edit"><button type="button"
+                class="w-100 bg-neutral-800 hover:bg-neutral-700 text-white font-semibold text-base px-4 py-2.5 rounded-xl transition">Edit profile</button></a>
+            <button type="button"
+                class="w-100 bg-neutral-800 hover:bg-neutral-700 text-white font-semibold text-base px-4 py-2.5 rounded-xl transition">Share
+                profile</button>
+            <button type="button"
+                class="bg-neutral-800 hover:bg-neutral-700 text-white px-3 py-1.5 rounded-lg transition"><i
+                    class="fas fa-user-plus text-sm"></i></button>
         </div>
     </div>
-    <div class="user-posts">
-        <div class="top d-flex align-item-center justify-content-around">
-            <a href="#" class=" "><i class="fas fa-table-cells"></i></a>
-            <a href="#" class=" "><i class="fas fa-clapperboard"></i></a>
-            <a href="#" class=" "><i class="fas fa-id-card-clip"></i></a>
+
+    <!-- Highlight Stories Section (Optional Placeholder) -->
+    <div class="flex gap-4 py-6 overflow-x-auto">
+        <div class="flex flex-col items-center gap-1 cursor-pointer">
+            <div
+                class="w-16 h-16 rounded-full border border-neutral-700 flex items-center justify-center bg-neutral-900 text-neutral-400 hover:border-neutral-500 transition">
+                <i class="fas fa-circle-plus text-xl"></i>
+            </div>
+            <span class="text-xs text-neutral-400">New</span>
         </div>
-
-        <div class="row my-2 gy-3">
-            <% user.posts.forEach((post)=> { %>
-                <div class="col-4">
-                    <img src="/images/uploads/<%= post.postImage %>"
-                        class="object-fit-cover h-100 w-100 overflow-hidden " alt="">
-                </div>
-                <% }) %>
-        </div>
-        <!-- <div class="col ">
-                        <img src="/images/post-img2.jpg" class="object-fit-cover h-100 img-fluid" alt="">
-                    </div>
-                    <div class="col ">
-                        <img src="/images/post-img3.jpg" class="object-fit-cover h-100 img-fluid" alt="">
-                    </div> -->
-
-
-        <!-- <div class="my-2 row ">
-                    <div class="col ">
-                        <img src="/images/post-img1.jpg" class="object-fit-cover h-100 img-fluid" alt="">
-                    </div>
-                    <div class="col ">
-                        <img src="/images/post-img2.jpg" class="object-fit-cover h-100 img-fluid" alt="">
-                    </div>
-                    <div class="col ">
-                        <img src="/images/post-img3.jpg" class="object-fit-cover h-100 img-fluid" alt="">
-                    </div>
-                </div> -->
-
     </div>
 
+    <!-- User Posts Section -->
+    <div class="user-posts mt-2">
+        <!-- Tabs Navigation -->
+        <div class="flex justify-center gap-12 border-t border-neutral-800 -mt-px">
+            <a href="#"
+                class="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase py-4 border-t border-white text-white"><i
+                    class="fas fa-table-cells text-xs"></i> Posts</a>
+            <a href="#"
+                class="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase py-4 text-neutral-500 hover:text-white transition"><i
+                    class="fas fa-clapperboard text-xs"></i> Reels</a>
+            <a href="#"
+                class="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase py-4 text-neutral-500 hover:text-white transition"><i
+                    class="fas fa-id-card-clip text-xs"></i> Tagged</a>
+        </div>
 
+        <!-- Posts Grid -->
+        <div class="grid grid-cols-3 gap-1 md:gap-4 mt-2 border-0 rounded-lg overflow-hidden">
+            <% if (user.posts && user.posts.length> 0) { %>
+                <% user.posts.forEach((post)=> { %>
+                    <div class="bg-neutral-900 overflow-hidden group relative cursor-pointer">
+                        <img src="/images/uploads/<%= post.postImage %>"
+                            class="object-cover w-full h-full group-hover:scale-105 transition duration-300"
+                            alt="Post Image">
+                    </div>
+                    <% }) %>
+                        <% } else { %>
+                            <div class="col-span-3 text-center py-16 text-neutral-500">
+                                <p class="text-sm">No posts yet</p>
+                            </div>
+                            <% } %>
+        </div>
+    </div>
 </div>
 
 

@@ -28,6 +28,7 @@ const userSchema = new mongoose.Schema({
     require: true,
   },
   profileImage: String,
+  bio: String,
   posts: [
     {
       type: mongoose.Schema.Types.ObjectId,
